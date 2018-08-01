@@ -1,0 +1,17 @@
+imports:
+- path: vm-template.py
+
+resources:
+- name: template-deploy
+  type: vm-template.py
+  properties:
+    # required
+    machineType: g1-small
+    sourceImage: projects/centos-cloud/global/images/centos-7-v20180716
+    region: us-west1
+    zone: us-west1-a
+    network: my-vpc
+    subnetwork: my-vpc-sub1-us-west1
+    # optional
+    vmCount: 3
+    tags: ['todd', 'private']
