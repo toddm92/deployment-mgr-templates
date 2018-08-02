@@ -1,0 +1,49 @@
+info:
+  title: VM Template
+  author: Todd
+  description: Creates one or more VMs
+  version: 1.0
+
+required:
+  - machineType
+  - sourceImage
+  - region
+  - zone
+  - network
+  - subnetwork
+
+properties:
+  machineType:
+    type: string
+    description: Machine type/ size of your VM.
+    default: g1-small
+    reference: https://cloud.google.com/compute/docs/machine-types
+
+  sourceImage:
+    type: string
+    description: Source image for your VM.
+    reference: https://cloud.google.com/compute/docs/images
+
+  region:
+    type: string
+    description: Region where to deply your VM.
+    default: us-west1
+
+  zone:
+    type: string
+    description: Zone to deply your VM into.
+    default: us-west1-a
+
+  network:
+    type: string
+    description: Your VPC network name.
+
+  subnetwork:
+    type: string
+    description: Your VPC subnetwork name.
+
+  vmCount:
+    type: integer
+    description: Number of VMs you want to deploy.
+    default: 1
+
