@@ -12,33 +12,31 @@ def GenerateConfig(context):
   Generates config
   """
 
-  project_id = context.env['project']
-
   config = {'resources': []}
   num    = 1
-
-  try:
-    count = context.properties['vmCount']
-  except KeyError:
-    count = 1
 
   try:
     tags = context.properties['tags']
   except KeyError:
     tags = []
 
-  for i in range(int(count)):
+  project_id = context.env['project']
+  zones      = context.properties['zones']
+
+  for zone in zones:
+
+    region = zone.split('-')[0] + '-' + zone.split('-')[1]
 
     vm = {
       'name': 'vm-' + context.env['name'] + '-' + str(num),
       'type': 'compute.v1.instance',
       'properties': {
-          'zone': context.properties['zone'],
+          'zone': zone,
           'machineType': ''.join(
             [
               COMPUTE_URL_BASE,
               '/projects/', project_id,
-              '/zones/', context.properties['zone'],
+              '/zones/', zone,
               '/machineTypes/', context.properties['machineType']
             ]
           ),
@@ -70,8 +68,8 @@ def GenerateConfig(context):
                 [
                   COMPUTE_URL_BASE,
                   '/projects/', project_id,
-                  '/regions/', context.properties['region'],
-                  '/subnetworks/', context.properties['subnetwork']
+                  '/regions/', region,
+                  '/subnetworks/', context.properties['network'], '-sub1-', region
                 ]
               ),
               'accessConfigs': [{

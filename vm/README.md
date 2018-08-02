@@ -1,7 +1,10 @@
 ```
-title: VM Template
-description: Creates one or more VMs
-version: 1.0
+  title: VM Template
+  author: Todd
+  description: |
+    Creates and deploys one VM into each specified zone.
+    Subnetwork naming convention: network + -sub1- + region
+  version: 2.0
 ```
 
 #### deploy..

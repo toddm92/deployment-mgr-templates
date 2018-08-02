@@ -8,10 +8,12 @@ resources:
     # required
     machineType: g1-small
     sourceImage: projects/centos-cloud/global/images/centos-7-v20180716
-    region: us-west1
-    zone: us-west1-a
     network: my-vpc
-    subnetwork: my-vpc-sub1-us-west1
+    zones:
+    - us-west1-a
+    - us-west2-a
+    - us-east1-b
     # optional
-    vmCount: 3
-    tags: ['todd', 'private']
+    tags:
+    - todd
+    - private
