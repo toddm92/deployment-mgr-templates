@@ -1,5 +1,6 @@
-# deployment-mgr-templates
-GCP Deployment Manager Templates
+# GCP Deployment Manager Templates
+
+Starting a collection of Google deployment templates.
 
 ### deploy..
 ```
